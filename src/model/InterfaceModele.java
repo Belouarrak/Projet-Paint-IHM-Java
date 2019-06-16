@@ -12,4 +12,6 @@ public interface InterfaceModele {
 	Ellipse2D.Float drawEllipse(int x1, int y1, int x2, int y2);
 
 	Rectangle2D.Float drawRectangle(int x1, int y1, int x2, int y2);
+	
+	
 }

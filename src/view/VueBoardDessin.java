@@ -36,19 +36,16 @@ public class VueBoardDessin extends JFrame {
 	private JButton btnLoad;
 	public JCheckBox remplir;
 
-	public VueBoardDessin(DessinBoard myDrawingBoard) {
+	public VueBoardDessin(DessinBoard myDessinBoard) {
 
 		setTitle("Mon Paint");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(70, 70, 1200, 700);
-		setResizable(false);
+		setResizable(true);
 
 		bottomPanel = new JPanel();
 		btnLine = new JButton("Ligne");
-		btnLine.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		
 		// contentPane.setLayout(null);
 		btnLine.setBounds(236, 492, 70, 70);
 		// contentPane.add(btnLine);
@@ -66,8 +63,8 @@ public class VueBoardDessin extends JFrame {
 		texte1.setBounds(50, 100, 200, 30);
 
 		btnBrush = new JButton("Free");
-		getContentPane().add(myDrawingBoard, BorderLayout.CENTER);
-
+		this.add(myDessinBoard, BorderLayout.CENTER);
+		this.requestFocus();
 		theBox = Box.createHorizontalBox();
 
 		btnUndo = new JButton("Prec");
@@ -96,8 +93,10 @@ public class VueBoardDessin extends JFrame {
 		bottomPanel.add(theBox);
 		theBox.add(remplir);
 		theBox.add(texte1);
-		getContentPane().add(bottomPanel, BorderLayout.SOUTH);
-		getContentPane().requestFocus();
+		this.add(bottomPanel, BorderLayout.SOUTH);
+		
+		
+		
 
 	}
 

@@ -50,13 +50,12 @@ public class DessinBoard extends JComponent {
 			graphique.setPaint(figureRemplir.get(i));
 			if (remplissage == 2) {
 				graphique.fill(figures.get(i));
+				//remplissage = 1;
 			}
 
 		}
 
 		if (load) {
-			Image img1 = Toolkit.getDefaultToolkit().getImage(openPath);
-			graphique.drawImage(img1, 0, 0, this);
 
 			graphique.setStroke(new BasicStroke(4));
 			for (int i = 0; i < figures.size(); i++) {
@@ -65,6 +64,7 @@ public class DessinBoard extends JComponent {
 				graphique.setPaint(figureRemplir.get(i));
 				if (remplissage == 2) {
 					graphique.fill(figures.get(i));
+					remplissage = 1;
 				}
 			}
 		}
