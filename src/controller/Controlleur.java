@@ -55,6 +55,14 @@ public class Controlleur {
 				if (e.getSource() == vueBoard.getBtnFill()) {
 					fillColor = JColorChooser.showDialog(null, "Prendre de quoi remplir", Color.BLACK);
 				}
+				if (e.getSource() == vueBoard.getBtnText()) {
+					if (!vueBoard.getTextField().getText().isEmpty()) {
+						dessinB.getFigures().add(myFunctions.drawString(vueBoard.getTextField().getText()));
+						dessinB.getFigureRemplir().add(new Color(0,0,0));
+						dessinB.getFigurecouleurcont().add(new Color(60,60,60));
+					}
+					
+				}
 				if (e.getSource() == vueBoard.getBtnRefresh()) {
 					dessinB.getFigures().clear();
 					dessinB.getFigureRemplir().clear();

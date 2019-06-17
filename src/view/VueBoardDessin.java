@@ -23,6 +23,7 @@ public class VueBoardDessin extends JFrame {
 
 	private JPanel bottomPanel;
 	private JTextField texte1;
+	private JButton btnText;
 	private JButton btnLine;
 	private JButton btnEllipse;
 	private JButton btnRectangle;
@@ -59,8 +60,8 @@ public class VueBoardDessin extends JFrame {
 		// contentPane.add(btnRectangle);
 
 		btnColor = new JButton("Colour");
-		texte1 = new JTextField("Insérez votre Texte");
-		texte1.setBounds(50, 100, 200, 30);
+		texte1 = new JTextField("Inserez votre Texte");
+		texte1.setBounds(50, 100, 200, 30); 
 
 		btnBrush = new JButton("Free");
 		this.add(myDessinBoard, BorderLayout.CENTER);
@@ -93,11 +94,10 @@ public class VueBoardDessin extends JFrame {
 		bottomPanel.add(theBox);
 		theBox.add(remplir);
 		theBox.add(texte1);
+		btnText = new JButton("Send");
+		theBox.add(btnText);
 		this.add(bottomPanel, BorderLayout.SOUTH);
 		
-		
-		
-
 	}
 
 	public JCheckBox getRemplir() {
@@ -107,7 +107,12 @@ public class VueBoardDessin extends JFrame {
 	public void setRemplir(JCheckBox remplir) {
 		this.remplir = remplir;
 	}
-
+	public void setTextFiel(String text) {
+		this.texte1.setText(text);
+	}
+	public JTextField getTextField() {
+		return this.texte1;
+	}
 	public JButton getBtnLine() {
 		return btnLine;
 	}
@@ -187,7 +192,12 @@ public class VueBoardDessin extends JFrame {
 	public void setBtnSave(JButton btnSave) {
 		this.btnSave = btnSave;
 	}
-
+	public void setBtnText(JButton btnText) {
+		this.btnText = btnText;
+	}
+	public JButton getBtnText() {
+		return btnText;
+	}
 	public void addButtonActionListener(ActionListener listener) {
 		btnLine.addActionListener(listener);
 		btnEllipse.addActionListener(listener);
@@ -200,6 +210,8 @@ public class VueBoardDessin extends JFrame {
 		btnSave.addActionListener(listener);
 		btnLoad.addActionListener(listener);
 		remplir.addActionListener(listener);
+		btnText.addActionListener(listener);
+		
 	}
 
 	public void addKeyListener(KeyListener listener) {

@@ -13,6 +13,7 @@ import java.awt.Toolkit;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
 import javax.swing.JComponent;
@@ -43,22 +44,36 @@ public class DessinBoard extends JComponent {
 		graphique.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
 		graphique.setStroke(new BasicStroke(4));
-
+		AffineTransform oldXForm = graphique.getTransform();
 		for (int i = 0; i < figures.size(); i++) {
-			graphique.setPaint(figurecouleurcont.get(i));
-			graphique.draw(figures.get(i));
-			graphique.setPaint(figureRemplir.get(i));
-			if (remplissage == 2) {
-				graphique.fill(figures.get(i));
-				//remplissage = 1;
+			//graphique.translate(0, 0);
+			if(figures.get(i) instanceof Texte) {
+				Texte txt = (Texte)figures.get(i);
+				graphique.translate(txt.getX()+i*2-150, txt.getY()+i*3-150);
+				graphique.setPaint(figurecouleurcont.get(i));
+				graphique.draw(txt.getShape());
+				graphique.setTransform(oldXForm);
+				//graphique.translate(0, 0);
+				
+				repaint();
 			}
-
+			else {
+				//graphique.translate(0, 0);
+				graphique.setPaint(figurecouleurcont.get(i));
+				graphique.draw(figures.get(i));
+				graphique.setPaint(figureRemplir.get(i));
+				if (remplissage == 2) {
+					graphique.fill(figures.get(i));
+					//remplissage = 1;
+				}
+			}
 		}
 
 		if (load) {
 
 			graphique.setStroke(new BasicStroke(4));
 			for (int i = 0; i < figures.size(); i++) {
+				
 				graphique.setPaint(figurecouleurcont.get(i));
 				graphique.draw(figures.get(i));
 				graphique.setPaint(figureRemplir.get(i));

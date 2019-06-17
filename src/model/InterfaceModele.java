@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
@@ -13,5 +14,6 @@ public interface InterfaceModele {
 
 	Rectangle2D.Float drawRectangle(int x1, int y1, int x2, int y2);
 	
+	Shape drawString(String text);
 	
 }

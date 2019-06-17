@@ -1,7 +1,12 @@
 package model;
 
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Shape;
+import java.awt.font.FontRenderContext;
+import java.awt.font.GlyphVector;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
@@ -36,6 +41,13 @@ public class DessinMethodes implements InterfaceModele {
 		return new Rectangle2D.Float(x, y, width, height);
 	}
 
+	public Texte drawString(String text) {
+		Font font = new Font("Arial", Font.PLAIN, 35);
+		FontRenderContext frc = new FontRenderContext(null, true, true);
+	    GlyphVector v = font.createGlyphVector(frc, text);
+	    Texte textShape = new Texte(200,200,v.getOutline());
+	    return textShape;
+	}
 	public void saveImage(String path, Graphics2D g2, DessinBoard drawB) {
 		try {
 			BufferedImage image = new BufferedImage(drawB.getWidth(), drawB.getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
