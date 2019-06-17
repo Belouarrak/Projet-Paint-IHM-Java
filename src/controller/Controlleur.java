@@ -44,6 +44,9 @@ public class Controlleur {
 				if (e.getSource() == vueBoard.getBtnRectangle()) {
 					dessinB.setCurrentAction(4);
 				}
+				if (e.getSource() == vueBoard.getBtnTriangle()) {
+					dessinB.setCurrentAction(5);
+				}
 				if (e.getSource() == vueBoard.getRemplir()) {
 					if (vueBoard.remplir.isSelected()) {
 						dessinB.setRemplissage(2);
@@ -165,6 +168,9 @@ public class Controlleur {
 								e.getY());
 					} else if (dessinB.getCurrentAction() == 4) {
 						aShape = myFunctions.drawRectangle(dessinB.getDrawStart().x, dessinB.getDrawStart().y, e.getX(),
+								e.getY());
+					} else if (dessinB.getCurrentAction() == 5) {
+						aShape = myFunctions.drawTriangle(dessinB.getDrawStart().x, dessinB.getDrawStart().y, e.getX(),
 								e.getY());
 					}
 					dessinB.getFigures().add(aShape);

@@ -9,6 +9,7 @@ import java.awt.font.FontRenderContext;
 import java.awt.font.GlyphVector;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
+import java.awt.geom.Path2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -47,6 +48,22 @@ public class DessinMethodes implements InterfaceModele {
 	    GlyphVector v = font.createGlyphVector(frc, text);
 	    Texte textShape = new Texte(200,200,v.getOutline());
 	    return textShape;
+	}
+	public Shape drawTriangle(int x1, int y1, int x2, int y2) {
+		Path2D.Double triangle = new Path2D.Double();
+		int x3 = 0;
+		if(x1-x2<0) {
+			x3 = x1-(x2-x1);
+		}
+		else {
+			x3 = x1+Math.abs(x2-x1);
+		}
+		int y3 = y2;
+	      triangle.moveTo(x1,y1);
+	      triangle.lineTo(x2, y2);
+	      triangle.lineTo(x3, y3);
+	      triangle.closePath();
+	      return triangle;
 	}
 	public void saveImage(String path, Graphics2D g2, DessinBoard drawB) {
 		try {

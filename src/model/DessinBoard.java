@@ -14,6 +14,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Path2D;
 import java.util.ArrayList;
 
 import javax.swing.JComponent;
@@ -49,7 +50,7 @@ public class DessinBoard extends JComponent {
 			//graphique.translate(0, 0);
 			if(figures.get(i) instanceof Texte) {
 				Texte txt = (Texte)figures.get(i);
-				graphique.translate(txt.getX()+i*2-150, txt.getY()+i*3-150);
+				graphique.translate(txt.getX()+i*5-150, txt.getY()+i*3-150);
 				graphique.setPaint(figurecouleurcont.get(i));
 				graphique.draw(txt.getShape());
 				graphique.setTransform(oldXForm);
@@ -95,6 +96,8 @@ public class DessinBoard extends JComponent {
 				uneFigure = mesMethodes.drawEllipse(drawStart.x, drawStart.y, drawEnd.x, drawEnd.y);
 			} else if (currentAction == 4) {
 				uneFigure = mesMethodes.drawRectangle(drawStart.x, drawStart.y, drawEnd.x, drawEnd.y);
+			} else if (currentAction == 5) {
+				uneFigure = mesMethodes.drawTriangle(drawStart.x, drawStart.y, drawEnd.x, drawEnd.y);
 			}
 			graphique.draw(uneFigure);
 

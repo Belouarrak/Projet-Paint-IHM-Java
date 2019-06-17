@@ -29,6 +29,7 @@ public class VueBoardDessin extends JFrame {
 	private JButton btnRectangle;
 	private JButton btnBrush;
 	private JButton btnColor;
+	private JButton btnTriangle;
 	private Box theBox;
 	private JButton btnFill;
 	private JButton btnRefresh;
@@ -54,6 +55,8 @@ public class VueBoardDessin extends JFrame {
 		btnEllipse = new JButton("Cerclipse");
 		btnEllipse.setBounds(334, 492, 70, 70);
 		// contentPane.add(btnEllipse);
+		btnTriangle = new JButton("Triangle");
+		btnTriangle.setBounds(334, 492, 70, 70);
 
 		btnRectangle = new JButton("Rectangle");
 		btnRectangle.setBounds(442, 492, 70, 70);
@@ -80,6 +83,7 @@ public class VueBoardDessin extends JFrame {
 		theBox.add(btnLine);
 		theBox.add(btnEllipse);
 		theBox.add(btnRectangle);
+		theBox.add(btnTriangle);
 		theBox.add(btnBrush);
 		theBox.add(btnColor);
 
@@ -211,10 +215,15 @@ public class VueBoardDessin extends JFrame {
 		btnLoad.addActionListener(listener);
 		remplir.addActionListener(listener);
 		btnText.addActionListener(listener);
+		btnTriangle.addActionListener(listener);
 		
 	}
 
 	public void addKeyListener(KeyListener listener) {
 		getContentPane().addKeyListener(listener);
+	}
+
+	public JButton getBtnTriangle() {
+		return btnTriangle;
 	}
 }
